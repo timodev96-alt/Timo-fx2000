@@ -70,6 +70,7 @@ def build():
         cmd += ["--icon", ICON_WIN]
     elif os_name == "Darwin" and os.path.exists(ICON_MAC):
         cmd += ["--icon", ICON_MAC]
+    cmd += ["--onefile"]
 
     cmd.append(ENTRY_POINT)
     run(cmd)

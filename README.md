@@ -101,6 +101,12 @@ numpy >= 1.24
 matplotlib >= 3.7
 tkinter (included with Python)
 ```
+🤖 AI Disclosure
+
+This project utilized [Claude code] for:
+
+    - Writing boilerplate code and optimizing algorithms.
+    - Debugging error messages.
 
 ---
 

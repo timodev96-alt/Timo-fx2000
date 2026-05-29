@@ -37,7 +37,7 @@ A powerful Desmos-style graphing calculator built with Python, Tkinter, NumPy an
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/timodev96-alt/timo-fx-2000.git
+git clone https://github.com/timodev96-alt/Timo-fx2000.git
 cd timo-fx-2000
 
 # 2. Install dependencies

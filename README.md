@@ -46,7 +46,7 @@ pip install numpy matplotlib
 # 3. Run
 python main.py
 ```
-
+# or ![Download Timo f(x) 2000](https://github.com/timodev96-alt/Timo-fx2000/releases/download/Timo_f(x)2000/Timof.x.2000.exe)
 ### Option B — Build a standalone executable
 
 ```bash
@@ -55,8 +55,6 @@ python build.py
 ```
 
 Output: `dist/TimoFx2000/TimoFx2000.exe` (Windows) or `dist/TimoFx2000/TimoFx2000` (Mac/Linux)
-
-See [README_BUILD.md](README_BUILD.md) for full build instructions.
 
 ---
 

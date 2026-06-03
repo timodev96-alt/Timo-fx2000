@@ -1,115 +1,96 @@
-# 📈 Timo F(x) 2000
+# Timo F(x) 2000
 
-A powerful Desmos-style graphing calculator built with Python, Tkinter, NumPy and Matplotlib.
+A graphing calculator I built with Python because I was tired of opening a browser just to plot a curve. It works like Desmos but runs fully offline as a desktop app.
 
----
-
-## ✨ Features
-
-- **Implicit equation graphing** — plot any relation like `x^2 + y^2 = 25`, not just `y = f(x)`
-- **Parametric curves** — enter `x=cos(t), y=sin(t)` for full parametric support
-- **Derivative / tangent overlay** — use `y=x^2 @ x=2` to draw the tangent line at any point
-- **Intersection detection** — automatically finds and labels where curves cross
-- **Curve tracer** — hover your mouse near any curve to snap and read precise coordinates
-- **Adaptive resolution** — fast low-res preview while typing, sharp high-res on settle
-- **Dual theme** — clean dark and light modes with one click
-- **Zoom & pan** — scroll wheel to zoom, middle-mouse drag to pan
-- **Per-equation controls** — toggle visibility, cycle color, switch mode per row
+![screenshot](https://github.com/user-attachments/assets/099ff2d0-fba1-4617-9700-22e2a608d4d9)
 
 ---
 
-## 🖥 Screenshots
+## What it can do
 
-> Dark mode — Heart curve on launch
+It handles more than just `y = f(x)`. You can type in implicit relations, parametric curves, or tangent lines and it figures out what to draw:
 
-> <img width="1401" height="695" alt="image" src="https://github.com/user-attachments/assets/099ff2d0-fba1-4617-9700-22e2a608d4d9" />
-
-
-```
-((x/6.5)^2 + (y/6.5)^2 - 1)^3 - (x/6.5)^2 * (y/6.5)^3 = 0
-```
+- `x^2 + y^2 = 25` — circles and implicit curves work natively
+- `x = cos(t), y = sin(t)` — parametric mode, just separate with a comma
+- `y = x^2 @ x = 2` — draws the tangent line at that exact point
+- Hover over any curve and it snaps to it and shows the coordinates
+- When two curves cross, it marks the intersection and prints the point
+- Scroll to zoom, middle-mouse drag to pan
+- Dark and light theme, toggle in the title bar
 
 ---
 
-## 🚀 Quick Start
+## Running it
 
-### Option A — Run from source
+You need Python 3.10+ and two packages:
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/timodev96-alt/Timo-fx2000.git
-cd timo-fx-2000
-
-# 2. Install dependencies
 pip install numpy matplotlib
-
-# 3. Run
 python main.py
 ```
-# or ![Download Timo f(x) 2000](https://github.com/timodev96-alt/Timo-fx2000/releases/download/Timo_f(x)2000/Timof.x.2000.exe)
-### Option B — Build a standalone executable
+
+Or just download the Windows executable directly from the releases tab (no Python needed).
+
+[![Download](https://img.shields.io/badge/Download-.exe-blue)](https://github.com/timodev96-alt/Timo-fx2000/releases/download/Timo_f(x)2000/Timof.x.2000.exe)
+
+---
+
+## Building the exe yourself
 
 ```bash
-pip install numpy matplotlib pyinstaller
+pip install pyinstaller
 python build.py
 ```
 
-Output: `dist/TimoFx2000/TimoFx2000.exe` (Windows) or `dist/TimoFx2000/TimoFx2000` (Mac/Linux)
+Puts the output in `dist/TimoFx2000/`. Zip that folder and it runs on any Windows machine.
 
 ---
 
-## 📁 Project Structure
+## Equation examples to try
 
-```
-Graphical Calculator/
-├── main.py              # Entry point
-├── config.py            # Themes, constants, color palette
-├── parser.py            # Syntax engine (implicit multiply, trig, parametric)
-├── renderer.py          # Adaptive contour + parametric + tangent renderer
-├── intersection.py      # Numerical intersection detection
-├── tracer.py            # Mouse curve-snapping tracer
-├── build.py             # PyInstaller build script
-├── requirements.txt     # pip dependencies
-└── ui/
-    ├── layout.py        # Root window, theme controller, event wiring
-    ├── keypad.py        # Calculator button panel
-    ├── sidebar.py       # Equation manager sidebar
-    └── graph_panel.py   # Matplotlib canvas, zoom, pan, control bar
-```
-
-
----
-
-## 🧮 Equation Examples
-
-| Type | Example |
-|------|---------|
-| Explicit | `y = sin(x)` |
-| Implicit | `x^2 + y^2 = 25` |
-| Vertical line | `x = 3` |
-| Parametric | `x=cos(t), y=sin(t)` |
-| Tangent line | `y=x^2 @ x=2` |
-| Heart curve | `((x/6.5)^2 + (y/6.5)^2 - 1)^3 - (x/6.5)^2 * (y/6.5)^3 = 0` |
+| What | Type this |
+|------|-----------|
+| Sine wave | `y = sin(x)` |
+| Circle | `x^2 + y^2 = 25` |
+| Parabola sideways | `x = y^2` |
+| Unit circle parametric | `x=cos(t), y=sin(t)` |
+| Tangent at a point | `y=x^2 @ x=2` |
+| Heart | `((x/6.5)^2 + (y/6.5)^2 - 1)^3 - (x/6.5)^2 * (y/6.5)^3 = 0` |
 | Lemniscate | `(x^2 + y^2)^2 = 2*(x^2 - y^2)` |
 
 ---
 
-## 📦 Dependencies
+## Project layout
+
+```
+├── main.py            entry point
+├── config.py          themes, colors, constants
+├── parser.py          turns what you type into something numpy can eval
+├── renderer.py        draws the curves using matplotlib contour
+├── intersection.py    finds where curves cross numerically
+├── tracer.py          mouse snapping and coordinate readout
+├── build.py           wraps pyinstaller into one command
+└── ui/
+    ├── layout.py      window, title bar, theme switching
+    ├── keypad.py      the button grid on the left
+    ├── sidebar.py     equation list on the right
+    └── graph_panel.py the matplotlib canvas in the middle
+```
+
+---
+
+## Dependencies
 
 ```
 numpy >= 1.24
 matplotlib >= 3.7
-tkinter (included with Python)
+tkinter        # ships with Python, no install needed
 ```
-🤖 AI Disclosure
-
-This project utilized [Claude code] for:
-
-    - Writing boilerplate code and optimizing algorithms.
-    - Debugging error messages.
 
 ---
 
-## 📄 License
+## Built with help from AI
 
-MIT License — free to use, modify and distribute.
+I used Claude as a coding assistant throughout this project, bouncing ideas, debugging the contour renderer, and getting the intersection detection to actually work. The architecture decisions, the feature choices, and the overall direction were mine. Claude wrote a lot of the code, I broke it, we fixed it together.
+
+---
